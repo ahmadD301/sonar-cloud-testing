@@ -1,5 +1,4 @@
 const { Given, When, Then } = require("@cucumber/cucumber");
-const assert = require("assert");
 const myAccountP = require("../JS-Files/myAccountP");
 const DB = require("../JS-Files/ourDataBase");
 let account = new myAccountP();
@@ -37,7 +36,9 @@ Then("send him to business account page", function () {
   account.loginBusinessAccount();
 });
 
-
+Then("redirect him to My Account page", function () {
+  account.openPage();
+});
 
 When("the user enters invalid integer in MyAccount Page {int}", function (int) {
   account.run(String(int));
