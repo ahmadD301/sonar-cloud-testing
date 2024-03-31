@@ -1,37 +1,43 @@
-name: Build and Deploy Static Site
+name: SonarCloud
 
 on:
   push:
     branches:
       - main
   pull_request:
-    branches:
-      - master
+    types: [opened, synchronize, reopened]
 
 jobs:
-  sonarcloud:
+  build:
+    name: Build and analyze
     runs-on: ubuntu-latest
+
     steps:
-      - name: Step 1 - Checkout main branch from GitHub
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20.11.1'
+          node-version: '14'  # Use the appropriate Node.js version for your project
 
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests with coverage and generate Istanbul report
-        run: |
-          npm run test:coverage
-          ./node_modules/.bin/istanbul report lcov
+      - name: Run tests with coverage
+        run: npm run test:coverage  # Replace with your actual test command that generates coverage reports
 
-      - name: Analyze code coverage with SonarCloud
+      - name: Upload coverage report to Codecov (optional)
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}  # Replace with your Codecov token
+          file: coverage/lcov.info  # Adjust the coverage report path if needed
+
+      - name: Analyze code with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          # Pass the coverage report to SonarCloud using the generic coverage command
+          # Specify the path to your coverage report for SonarCloud to analyze
           SONAR_SCANNER_OPTS: "-Dsonar.coverage.exclusions='**/node_modules/**' -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info"
