@@ -27,16 +27,15 @@ class LoginP extends Page {
   }
 
   submitManu(option) {
-    this.option = option;
-    switch (String(this.option)) {
-      case "1":
+    switch (option) {
+      case "0":
         this.enterEmailAndPassword();
         break;
-      case "2":
-        console.log("in case 2");
+      case "1":
+        console.clear();
         break;
       default:
-        console.log("in case 3");
+        console.log("invalid data input");
         break;
     }
   }
@@ -58,7 +57,7 @@ class LoginP extends Page {
   instructions = [
     "submit",
     "go to login paget",
-    "go to registerion page",
+    
     "return to starting page",
     "go to user page",
   ];
@@ -66,13 +65,10 @@ class LoginP extends Page {
   clicks(scenario) {
     switch (scenario.toLowerCase().trim()) {
       case "submit":
-        this.submitManu(1);
+        this.submitManu(0);
         break;
       case "go to login page":
         this.goToLoginPage();
-        break;
-      case "go to registerion page":
-        this.goToRegPage();
         break;
       case "return to starting page":
         this.goToStartingPage();
@@ -105,8 +101,7 @@ class LoginP extends Page {
             this.systemMsg = "User Successfully Login\n";
             this.goToUserPage();
             break;
-          default:
-            this.tempMsg = "";
+          default:w
             break;
         }
       } else {
@@ -138,9 +133,6 @@ class LoginP extends Page {
     this.nextPage = 2;
   }
 
-  welcomeMessage() {
-    console.log("Login Seccussfully");
-  }
   getState() {
     return DB.userMap.get(this.cache.email).type;
   }
@@ -152,13 +144,6 @@ class LoginP extends Page {
   }
   getEmail() {
     return this.email;
-  }
-
-  setOption(_option) {
-    this.option = readlineSync.question("Enter Your Option: ");
-  }
-  getOption() {
-    return this.option;
   }
 
   readOption() {

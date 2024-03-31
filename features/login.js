@@ -7,6 +7,7 @@ Given("the user is on the login page", function () {
 });
 
 When("the user enters valid data {string} and {int}", function (string, int) {
+  login.printSubmitManu();
   login.checkEmailAndPassword(string, int);
 });
 
@@ -44,6 +45,7 @@ Then("back to starting page", function () {
 
 When("user select {string} options in login page", function (string) {
   login.clicks("return to starting page");
+  login.submitManu('1');
 });
 
 
@@ -58,6 +60,7 @@ When(
   "the user enters invalid integer in login Page {string}",
   function (string) {
     login.clicks(string);
+    login.submitManu('3');
   }
 );
 
