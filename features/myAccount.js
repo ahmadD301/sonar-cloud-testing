@@ -36,9 +36,7 @@ Then("send him to business account page", function () {
   account.loginBusinessAccount();
 });
 
-Then("redirect him to My Account page", function () {
-  account.openPage();
-});
+
 
 When("the user enters invalid integer in MyAccount Page {int}", function (int) {
   account.run(String(int));

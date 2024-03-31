@@ -35,13 +35,6 @@ When(
   }
 );
 
-Then("the system should display a message to warn him", function () {
-  assert.equal(
-    registerion.systemMsg,
-    "the password is invalid",
-    "email already taken test failed"
-  );
-});
 Then(
   "the system should display a message {string} to warn him",
   function (string) {
