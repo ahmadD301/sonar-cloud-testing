@@ -42,7 +42,7 @@ When(
   }
 );
 Then("return him to Business Account page", function () {
-  bAccount.openPage();
+  bAccount.backspace();
 });
 
 When(
