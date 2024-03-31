@@ -24,7 +24,6 @@ class StartP extends Page {
   goToExit() {
     this.nextPage = -1;
   }
-  instructions = ["Register", "Login", "Exit"];
   readOption() {
     const option = readlineSync.question("Enter option number: ");
     if (option < 3) this.run(this.instructions[option]);
