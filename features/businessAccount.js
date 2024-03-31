@@ -38,10 +38,11 @@ When(
   function (string) {
     bAccount.printMenu();
     console.log("user select option:" + string);
+
   }
 );
 Then("return him to Business Account page", function () {
-  bAccount.backspace();
+  bAccount.openPage();
 });
 
 When(
