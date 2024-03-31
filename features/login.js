@@ -13,7 +13,7 @@ When(
     login.printSubmitManu();
     login.setEmail(string);
     login.setPassword(string2);
-    login.checkEmailAndPassword(login.email, login.password);
+    login.submitManu('0');
   }
 );
 
@@ -23,12 +23,12 @@ When(
     login.printSubmitManu();
     login.setEmail(string);
     login.setPassword(string2);
-    login.checkEmailAndPassword(login.email, login.password);
+    login.checkEmailAndPassword(login.cache.email, login.cache.password);
   }
 );
 
 Then("redirect him to user or admin home page", function () {
-  login.goToLoginPage();
+  login.goToUserPage();
 });
 
 Then("display an message {string}", function (string) {

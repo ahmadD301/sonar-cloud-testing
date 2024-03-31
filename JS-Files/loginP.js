@@ -25,7 +25,7 @@ class LoginP extends Page {
                   0. submit.
                   1. cancel`);
   }
-  printMenu(){
+  printMenu() {
     console.log(`Options: 
         0. Login to your account
         1. return to start page`);
@@ -82,24 +82,21 @@ class LoginP extends Page {
         SharedMemory.email = email;
         switch (tempState) {
           case "admin":
-            this.systemMsg = "Admin Successfully Login\n";
-            this.goToAdminPage();
+            console.log('welcom admin');
             break;
           case "user":
-            this.systemMsg = "User Successfully Login\n";
             this.goToUserPage();
             break;
           default:
-            w;
+            console.log("invalid user type");
             break;
         }
       } else {
-        this.systemMsg = "incorrect password\n";
+        console.log('incorrect password')
       }
     } else {
-      this.systemMsg = "this email doesnt exist\n";
+      console.log('this email doesnt exist');
     }
-    console.log(this.systemMsg);
   }
 
   goToStartingPage() {
@@ -111,10 +108,7 @@ class LoginP extends Page {
     this.nextPage = 4;
     Server.username = this.email;
   }
-  goToAdminPage() {
-    this.nextPage = 7;
-    Server.username = this.email;
-  }
+
   goToLoginPage() {
     this.nextPage = 3;
   }
@@ -127,9 +121,6 @@ class LoginP extends Page {
   }
   setEmail(email) {
     this.cache.email = email;
-  }
-  getEmail() {
-    return this.email;
   }
 
   readOption() {
