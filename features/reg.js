@@ -57,9 +57,7 @@ When("the user enter an email that is already taken", function () {
   registerion.fillData("asem", "asemhesham@gmail.com", "Asem@2003");
 });
 
-Given("user is in the registerion page", function () {
-  registerion.openPage();
-});
+
 When("user enters a valid email", function () {
   registerion.setEmail("ahmad@gmail.com");
   registerion.setName("ahmad yassen");
@@ -69,9 +67,6 @@ When("user enters a weak password", function () {
   registerion.setPassword("123456789");
 });
 
-Given("the user is on the registerion page", function () {
-  registerion.openPage();
-});
 
 When("clicks on login page button", function () {
   registerion.goToLoginPage();
@@ -88,8 +83,4 @@ When("the user clicks on the return option", function () {
 
 Then("redirect him to Start Page", function () {
   assert.equal(registerion.nextPage, 1);
-});
-
-Then("reture to the Register page", function () {
-  assert.equal(registerion.nextPage, 0, "invalid test failed ");
 });
