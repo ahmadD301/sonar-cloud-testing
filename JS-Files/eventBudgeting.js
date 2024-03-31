@@ -3,6 +3,7 @@ const DB = require("../JS-Files/ourDataBase.js");
 const readlineSync = require("readline-sync");
 const Server = require("../main");
 const PrintData = require("../JS-Files/printData.js");
+const sharedD = require("../JS-Files/SharedData.js");
 let printData = new PrintData();
 class EventBudgeting {
   printMenu() {
@@ -12,8 +13,12 @@ Track Your Event Expences, Vendor Payments and Venue Rental Fees.`
     );
 
     printData.printEventData(DB.eventMap);
-    let option = readlineSync.question("Choose an Event:");
-
+    let option;
+    if(sharedD.readFromMain ){
+    option = readlineSync.question("Choose an Event: ");
+    }else{
+      option = 'event-001'
+    }
     let tempMap = new Map();
     tempMap = DB.eventMap;
     let eventID;

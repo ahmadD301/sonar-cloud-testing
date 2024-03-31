@@ -33,28 +33,23 @@ class ProfilePage extends Page {
 
   readOption() {
     this.nextPage = 0;
-    let option = readlineSync.question("enter Choice");
+    let option = readlineSync.question("Enter Choice: ");
     console.log("option:", option + "");
     switch (option + "") {
       case "0":
         this.displayRevelation(SharedData.email);
-        readlineSync.question();
         break;
       case "1":
         this.myAccount();
-        readlineSync.question();
         break;
       case "2":
         this.displayNotification();
-        readlineSync.question();
         break;
       case "3":
         this.nextPage = 1;
-        readlineSync.question();
         break;
       case "4":
         this.nextPage = 4;
-        readlineSync.question();
         break;
     }
     return this.nextPage;
@@ -157,7 +152,6 @@ class ProfilePage extends Page {
     switch (theButton.trim()) {
       case "Reservation":
         this.displayRevelation();
-        readlineSync.question();
         break;
       case "my account":
         this.myAccount();
@@ -166,8 +160,6 @@ class ProfilePage extends Page {
       case "notification":
         this.displayNotification();
         console.log("in notification case");
-        readlineSync.question();
-
         break;
       case "Logout":
         this.logout();
