@@ -36,13 +36,6 @@ When(
   }
 );
 
-Then("the system should display a message to warn him", function () {
-  assert.equal(
-    registerion.systemMsg,
-    "the password is invalid",
-    "email already taken test failed"
-  );
-});
 Then(
   "the system should display a message {string} to warn him",
   function (string) {
@@ -70,9 +63,6 @@ When("user enters a weak password", function () {
   registerion.setPassword("123456789");
 });
 
-Given("the user is on the registerion page", function () {
-  registerion.openPage();
-});
 
 When("clicks on login page button", function () {
   registerion.goToLoginPage();
@@ -91,6 +81,3 @@ Then("redirect him to Start Page", function () {
   assert.equal(registerion.nextPage, 1);
 });
 
-Then("reture to the Register page", function () {
-  assert.equal(registerion.nextPage, 0, "invalid test failed ");
-});
