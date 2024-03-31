@@ -3,18 +3,16 @@ Feature: Login page
     Scenario Outline: user or admin successful login
         Given the user is on the login page
         When the user enters valid data <email> and <password>
-        And clicks on submit option
         Then redirect him to user or admin home page
         Examples:
             | email                  | password |
-            | 'sayed@hotmail.com'    | 123456   |
+            | 'sayed@hotmail.com'    | '123456' |
             | 'asemhesham@gmail.com' | '123456' |
 
 
     Scenario Outline: incorrect email or password
         Given the user is on the login page
         When the user enters incorrect <email> or <password>
-        And clicks on submit option
         Then display an message "Wronge Email or Password Data Input"
         And refresh login page
         Examples:

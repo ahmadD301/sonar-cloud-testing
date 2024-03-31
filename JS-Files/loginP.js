@@ -7,8 +7,8 @@ const SharedMemory = require("../JS-Files/SharedData");
 class LoginP extends Page {
   state = "admin";
 
-  password = "password";
-  email = "name@example.com";
+  password = null;
+  email = null;
 
   userObject = "";
 
@@ -25,11 +25,16 @@ class LoginP extends Page {
                   0. submit.
                   1. cancel`);
   }
+  printMenu(){
+    console.log(`Options: 
+        0. Login to your account
+        1. return to start page`);
+  }
 
   submitManu(option) {
-    switch (option) {
+    switch (String(option)) {
       case "0":
-        this.enterEmailAndPassword();
+        this.checkEmailAndPassword(this.cache.email, this.cache.password);
         break;
       case "1":
         console.clear();
@@ -42,39 +47,23 @@ class LoginP extends Page {
 
   enterEmailAndPassword() {
     this.cache.email = readlineSync.question("Enter Your Email:");
-    console.log(typeof this.email);
     this.cache.password = readlineSync.question("Enter Your Password:");
-    console.log(typeof this.email);
     this.userObject = DB.userMap.get(this.cache.email);
-    console.log(typeof this.userObject);
     this.setEmail(this.cache.email);
     this.setPassword(this.cache.password);
     this.printSubmitManu();
-    this.option = readlineSync.question();
-    this.submitManu(this.option);
-    this.checkEmailAndPassword(this.cache.email, this.cache.password);
+    let option = readlineSync.question();
+    this.submitManu(option);
   }
-  instructions = [
-    "submit",
-    "go to login paget",
-    
-    "return to starting page",
-    "go to user page",
-  ];
+  instructions = ["login", "return"];
 
   clicks(scenario) {
-    switch (scenario.toLowerCase().trim()) {
-      case "submit":
-        this.submitManu(0);
+    switch (scenario.trim()) {
+      case "login":
+        this.enterEmailAndPassword();
         break;
-      case "go to login page":
-        this.goToLoginPage();
-        break;
-      case "return to starting page":
+      case "return":
         this.goToStartingPage();
-        break;
-      case "go to user page":
-        this.goToUserPage();
         break;
       default:
         console.log("Invalid option. Please choose an existed option");
@@ -83,14 +72,13 @@ class LoginP extends Page {
 
   checkEmailAndPassword(email, password) {
     this.cache.email = email;
-    console.log("the email is ------>" + this.cache.email);
     this.cache.password = password;
-    console.log("the pass is ------>" + this.cache.password);
     let user = DB.userMap.get(this.cache.email);
-
     if (user != undefined) {
       if (this.cache.password == user.password) {
         let tempState = this.getState();
+        this.email = this.cache.email;
+        this.password = this.cache.password;
         SharedMemory.email = email;
         switch (tempState) {
           case "admin":
@@ -101,7 +89,8 @@ class LoginP extends Page {
             this.systemMsg = "User Successfully Login\n";
             this.goToUserPage();
             break;
-          default:w
+          default:
+            w;
             break;
         }
       } else {
@@ -129,9 +118,6 @@ class LoginP extends Page {
   goToLoginPage() {
     this.nextPage = 3;
   }
-  goToRegPage() {
-    this.nextPage = 2;
-  }
 
   getState() {
     return DB.userMap.get(this.cache.email).type;
@@ -148,7 +134,7 @@ class LoginP extends Page {
 
   readOption() {
     const option = readlineSync.question("Enter option number: ");
-    if (option < 5) this.clicks(this.instructions[option]);
+    if (option < 2) this.clicks(this.instructions[option]);
     return this.nextPage;
   }
 }
