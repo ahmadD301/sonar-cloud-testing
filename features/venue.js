@@ -19,7 +19,7 @@ Then("the system display all venue", function () {
 });
 
 Then("return user to venue page", function () {
-  venue.openPage();
+  venue.openUserPage();
 });
 
 When("the user chooses an attribute to search", function () {

@@ -102,7 +102,13 @@ class CpaP extends Page {
                   3. Market place.
                   4. Mobile Apps.
                   5. Education and Training.`);
-    const option = readlineSync.question("Enter Your Option: ");
+    
+    let option ;
+    if(sharedD.readFromMain){
+      option= readlineSync.question("Enter Your Option: ");
+    }else{
+      option = "1";
+    }
     switch (option) {
       case "1":
         this.setType("Art Design");

@@ -8,7 +8,6 @@ DB.init();
 
 Given("the user is on the Create Business Account page", function () {
   createBAccount.openPage();
-  console.log("open page");
 });
 When("clicks on {string} page option", function (string) {
   createBAccount.printMenu();
@@ -17,8 +16,10 @@ When("clicks on {string} page option", function (string) {
 When("the user enters valid data page", function () {
   namePage = "Al-Najah-UNI";
   phoneNumber = "0599989199";
-  pageType = "company";
+  createBAccount.selectType();
+  pageType = createBAccount.businessType;
   sharedD.email = "ahmad@gmail.com";
+  createBAccount.allInputsValid(namePage, phoneNumber, pageType);
   createBAccount.writeData(namePage, phoneNumber, pageType);
 });
 
@@ -29,16 +30,21 @@ Then("redirect him to myAccount page", function () {
 When("the user enters valid name page that already exist", function () {
   namePage = "Asem-Hesham";
   phoneNumber = "0599989199";
-  pageType = "company";
+
+  createBAccount.selectType();
+  pageType = createBAccount.businessType;
   sharedD.email = "ahmad@gmail.com";
+  createBAccount.allInputsValid(namePage, phoneNumber, pageType);
   createBAccount.writeData(namePage, phoneNumber, pageType);
 });
 
 When("the user enters invalid data page like null", function () {
   namePage = "";
   phoneNumber = "0599989199";
-  pageType = "company";
+  createBAccount.selectType();
+  pageType = createBAccount.businessType;
   sharedD.email = "ahmad@gmail.com";
+  createBAccount.allInputsValid(namePage, phoneNumber, pageType);
   createBAccount.writeData(namePage, phoneNumber, pageType);
 });
 

@@ -45,7 +45,7 @@ class UserP extends Page {
     if (option < 3) this.run(this.instructions[option]);
     return this.nextPage;
   }
-
+  
   reopenPage() {
     this.nextPage = 0;
   }
