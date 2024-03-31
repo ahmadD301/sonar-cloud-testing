@@ -42,17 +42,12 @@ Then("back to starting page", function () {
   login.clicks("return to starting page");
 });
 
-Then("send the user to registerion page", function () {
-  login.clicks("go to registerion page");
-});
+
 
 When("user select {string} options in login page", function (string) {
   login.clicks("return to starting page");
 });
 
-When("userthe  enters invalid integer in login Page {int}", function (int) {
-  login.clicks(String(int));
-});
 
 Then("return him to login page", function () {
   login.openPage();
@@ -68,9 +63,7 @@ When(
   }
 );
 
-When("the user enters any invalid integer", function () {
-  console.log("invalid input");
-});
+
 
 Then("display message {string}", function (string) {
   console.log(string);
