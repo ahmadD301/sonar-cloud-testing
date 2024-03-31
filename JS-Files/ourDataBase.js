@@ -197,22 +197,6 @@ class DataHandler{
             DataHandler.insertEvent(id,newName,newDate,newVenue,newtime, newtheme ,newDescription, newCount, newtype);
         }
     }
-   static updateVenue( id, name,location,capcity,price,Amenities){
-    if(id!=undefined) {
-        let row = DataHandler.venueMap.get(id);
-        if(row==undefined) {
-            return;
-        }
-            let newID = row.id;
-            let newName= (name != undefined ? name :row.name);
-            let newLocation= (location != undefined ? location.trim() :row.location);
-            let newCapcity= (capcity != undefined ? capcity.trim() :row.capcity);
-            let newPrice= (price != undefined ? price.trim() :row.price);
-            let newAmenities= (Amenities != undefined ? Amenities.toString().trim() :row.Amenities);
-        DataHandler.insertVenue(newID , newName , newLocation,newCapcity,newPrice,newAmenities);
-    }}
-
-
 }
 
 module.exports=DataHandler;
