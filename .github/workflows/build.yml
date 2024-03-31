@@ -1,5 +1,4 @@
 name: SonarCloud
-#comment
 on:
   push:
     branches:
