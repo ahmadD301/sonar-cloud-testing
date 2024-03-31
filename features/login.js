@@ -57,18 +57,20 @@ When("userthe  enters invalid integer in login Page {int}", function (int) {
 Then("return him to login page", function () {
   login.openPage();
 });
+When("the user enters invalid integer in login Page {int}", function (int) {
+  login.clicks(String(int));
+});
 
 When(
   "the user enters invalid integer in login Page {string}",
   function (string) {
-    login.clicks(string)
+    login.clicks(string);
   }
 );
 
 When("the user enters any invalid integer", function () {
   console.log("invalid input");
 });
-
 
 Then("display message {string}", function (string) {
   console.log(string);

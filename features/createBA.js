@@ -12,15 +12,14 @@ Given("the user is on the Create Business Account page", function () {
 });
 When("clicks on {string} page option", function (string) {
   createBAccount.printMenu();
-  // createBAccount.clicks(string);
 });
 
 When("the user enters valid data page", function () {
-  namePage = 'Al-Najah-UNI';
-  phoneNumber = '0599989199';
-  pageType = 'company';
-  sharedD.email = 'ahmad@gmail.com';
-  createBAccount.writeData(namePage, phoneNumber ,pageType);
+  namePage = "Al-Najah-UNI";
+  phoneNumber = "0599989199";
+  pageType = "company";
+  sharedD.email = "ahmad@gmail.com";
+  createBAccount.writeData(namePage, phoneNumber, pageType);
 });
 
 Then("redirect him to myAccount page", function () {
@@ -28,19 +27,19 @@ Then("redirect him to myAccount page", function () {
 });
 
 When("the user enters valid name page that already exist", function () {
-  namePage = 'Asem-Hesham';
-  phoneNumber = '0599989199';
-  pageType = 'company';
-  sharedD.email = 'ahmad@gmail.com';
-  createBAccount.writeData(namePage, phoneNumber ,pageType);
+  namePage = "Asem-Hesham";
+  phoneNumber = "0599989199";
+  pageType = "company";
+  sharedD.email = "ahmad@gmail.com";
+  createBAccount.writeData(namePage, phoneNumber, pageType);
 });
 
 When("the user enters invalid data page like null", function () {
-  namePage = '';
-  phoneNumber = '0599989199';
-  pageType = 'company';
-  sharedD.email = 'ahmad@gmail.com';
-  createBAccount.writeData(namePage, phoneNumber ,pageType);
+  namePage = "";
+  phoneNumber = "0599989199";
+  pageType = "company";
+  sharedD.email = "ahmad@gmail.com";
+  createBAccount.writeData(namePage, phoneNumber, pageType);
 });
 
 When(

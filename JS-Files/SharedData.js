@@ -3,6 +3,7 @@ class SharedData{
     static venueID;
     static eventID;
     static bussinessID;
+    static readFromMain = false;
 }
 
 module.exports = SharedData

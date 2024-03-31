@@ -308,14 +308,12 @@ class EventManagementPage extends Page {
         break;
       case "return":
         this.goToUserPage();
+        break;
       default:
         console.log("invalid data input");
         break;
     }
   }
 }
-let eve =new EventManagementPage();
-printData.printEventData(DB.eventMap);
-eve.selectToUpdate();
-printData.printEventData(DB.eventMap);
+
 module.exports = EventManagementPage;

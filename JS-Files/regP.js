@@ -1,5 +1,6 @@
 const readlineSync = require("readline-sync");
 const DB = require("../JS-Files/ourDataBase");
+const SharedData = require("../JS-Files/SharedData.js");
 const Page = require("./Page.js");
 DB.init();
 class RegP extends Page {
@@ -17,20 +18,18 @@ class RegP extends Page {
   };
 
   nextPage = 0;
-  instructions = ["submit", "go to login page", "return to start page"];
+  instructions = ["Start Reg", "go to login page", "return to start page"];
 
   usernameValidity(username) {
     if (username.length > 3) {
       return true;
     } else {
-      return false;
       console.log("Try to enter a username with more than 3 characters.");
+      return false;
     }
   }
   emailAlreadyTaken(email) {
-    if (DB.userMap.get(email) == undefined) return true;
-
-    return false;
+    return DB.userMap.get(email) == undefined;
   }
 
   emailValidity(email) {
@@ -62,7 +61,7 @@ class RegP extends Page {
       hasSpecialChar
     ) {
       return true;
-    } else {
+    } else if(SharedData.readFromMain){
       console.log(`"Warning: Your password is weak!
                    For a stronger password:
                    - Use a combination of uppercase and lowercase letters.
@@ -73,7 +72,6 @@ class RegP extends Page {
   }
 
   fillData() {
-    this.readTheData();
     this.email = this.cache.email;
     this.username = this.cache.username;
     this.password = this.cache.password;
@@ -97,6 +95,7 @@ class RegP extends Page {
   }
 
   readTheData() {
+
     let email = readlineSync.question("Enter Your Email: ");
     let username = readlineSync.question("Enter Your Name: ");
     let password = readlineSync.question("Enter Your Password: ");
@@ -113,16 +112,16 @@ class RegP extends Page {
       const submit = readlineSync.question("Enter submit to complete: ");
       this.submitMenu(submit);
     }
+
   }
 
   submitMenu(option) {
-    this.option = option;
-    switch (String(this.option)) {
-      case "1":
+    switch (String(option)) {
+      case "0":
+        // this.readTheData();
         this.fillData();
-
         break;
-      case "2":
+      case "1":
         console.clear();
         break;
       default:
@@ -147,8 +146,8 @@ class RegP extends Page {
 
   clicks(scenario) {
     switch (scenario.toLowerCase().trim()) {
-      case "submit":
-        this.submitMenu(1);
+      case "start reg":
+        this.readTheData();
         break;
       case "go to login page":
         this.goToLoginPage();

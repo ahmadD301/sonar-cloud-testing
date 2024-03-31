@@ -1,16 +1,14 @@
 const readlineSync = require("readline-sync");
 const DB = require("../JS-Files/ourDataBase");
 const Page = require("../JS-Files/Page");
-const  Server=require("../main")
-const SharedMemory=require("../JS-Files/SharedData")
+const Server = require("../main");
+const SharedMemory = require("../JS-Files/SharedData");
 
 class LoginP extends Page {
   state = "admin";
 
   password = "password";
   email = "name@example.com";
-
-
 
   userObject = "";
 
@@ -55,10 +53,16 @@ class LoginP extends Page {
     this.printSubmitManu();
     this.option = readlineSync.question();
     this.submitManu(this.option);
-    this.checkEmailAndPassword(this.cache.email,this.cache.password);
+    this.checkEmailAndPassword(this.cache.email, this.cache.password);
   }
+  instructions = [
+    "submit",
+    "go to login paget",
+    "go to registerion page",
+    "return to starting page",
+    "go to user page",
+  ];
 
-  
   clicks(scenario) {
     switch (scenario.toLowerCase().trim()) {
       case "submit":
@@ -91,7 +95,7 @@ class LoginP extends Page {
     if (user != undefined) {
       if (this.cache.password == user.password) {
         let tempState = this.getState();
-        SharedMemory.email=email
+        SharedMemory.email = email;
         switch (tempState) {
           case "admin":
             this.systemMsg = "Admin Successfully Login\n";
@@ -102,7 +106,7 @@ class LoginP extends Page {
             this.goToUserPage();
             break;
           default:
-             this.tempMsg = "";
+            this.tempMsg = "";
             break;
         }
       } else {
@@ -158,8 +162,8 @@ class LoginP extends Page {
   }
 
   readOption() {
-    this.nextPage = 0;
-    this.enterEmailAndPassword();
+    const option = readlineSync.question("Enter option number: ");
+    if (option < 5) this.clicks(this.instructions[option]);
     return this.nextPage;
   }
 }

@@ -11,9 +11,8 @@ Given("the user is on Business Account page", function () {
 });
 
 When("select {string} options in Business Account page", function (string) {
-  bAccount.printMenue();
+  bAccount.printMenu();
   console.log("user select option:" + string);
-  bAccount.run(string);
 });
 
 Then("displaying upcoming events and important dates.", function () {
@@ -37,9 +36,9 @@ When(
 When(
   "user select {string} options in Business Account page",
   function (string) {
-    bAccount.printMenue();
+    bAccount.printMenu();
     console.log("user select option:" + string);
-    bAccount.run(string);
+
   }
 );
 Then("return him to Business Account page", function () {

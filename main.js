@@ -12,6 +12,7 @@
 // const CreateBussinessAccount = require("./JS-Files/createBAccountP");
 // const BussinessAccount = require("./JS-Files/businessAccountP");
 // const VenuePage = require("./JS-Files/venue");
+// const SharedData = require("./JS-Files/SharedData.js");
 
 // class Server {
 //   static currentPage = new Page();
@@ -66,13 +67,16 @@
 //   }
 //   static excute() {
 //     DB.init();
-
+//     SharedData.readFromMain = true;
 //     while (true) {
 //       Server.currentPage.printMenu();
 //       let status = Server.currentPage.readOption();
 //       console.log(Server.getStatusMessage(status));
 //       if (status == undefined) console.log("\n");
 //       switch (String(status)) {
+//         case "-1":
+//           process.exit(0);
+
 //         case "0":
 //           break;
 //         case "1":

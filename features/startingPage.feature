@@ -2,17 +2,17 @@ Feature: Starting Page
 
    Scenario: Registerion new account
        Given the user is in the startng page
-       When the user enters option 1
+       When the user enters "Register" option
        Then transfere him to the registerion page with option
 
   Scenario: Login to your account
       Given the user is in the startng page
-      When the user enters 2
+      When the user enters "Login" option
       Then transfere him to the login page with option 2
 
   Scenario: Exit
       Given the user is in the startng page
-      When the user enters 3
+      When the user enters "Exit" option
       Then exit the program with option 3
 
    Scenario Outline: Invalid input

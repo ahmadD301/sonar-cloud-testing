@@ -7,7 +7,6 @@ let printData = new PrintData();
 
 DB.init();
 class VenuePage extends Page {
-  nextPage = 0;
   userPage = 0;
   nextPage = 0;
   instructions = [
@@ -120,7 +119,6 @@ class VenuePage extends Page {
     return option + whiteSpace;
   }
   viewVenue() {
-    
     printData.printVenueData(DB.venueMap);
   }
 
@@ -312,7 +310,7 @@ class VenuePage extends Page {
   readOption() {
     const option = readlineSync.question("enter option number");
     if (option < 5) this.clickButton(this.instructions[option]);
-    return this.nextPage
+    return this.nextPage;
   }
 }
 
