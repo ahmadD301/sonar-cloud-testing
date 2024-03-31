@@ -12,11 +12,6 @@ class BusinessAccountP extends Page {
   isReturn = false;
   nextPage = 0;
 
-  init() {
-    this.isGoToVenue = false;
-    this.isReturn = false;
-  }
-
   displayCalendar() {
     DB.reservationMap.forEach((value, key) => {
       if (value.id == SharedData.bussinessID) {
