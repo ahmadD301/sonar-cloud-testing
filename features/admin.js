@@ -31,7 +31,7 @@ When("enter unexisteing user email to delete", function () {
 When("the admin fill data to update", function () {
     emailData = 'sayed@gmail.com';
     username = 'Soso Qa';
-    password = "123AD#Q@";
+    password = "dddd";
     type = 'user'
     admin.setEmail(emailData);
     admin.setName(username);

@@ -42,7 +42,7 @@ class AdminP extends Page {
       type = readlineSync.question("Enter user type: ");
     } else {
       username = "patata";
-      password = "211333";
+      password = "dddd";
       type = "user";
     }
     this.setName(username);
