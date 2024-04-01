@@ -12,7 +12,8 @@ class BusinessAccountP extends Page {
 
   displayCalendar() {
     DB.reservationMap.forEach((value, key) => {
-      if (value.id == SharedData.bussinessID) {
+      console.log(SharedData.bussinessID)
+      if (value.email == SharedData.email) {
         console.log(
           ` ${VenuePage.makeCol(key)}  | ${VenuePage.makeCol(
             value.email
