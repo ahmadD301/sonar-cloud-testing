@@ -35,7 +35,7 @@ When("the admin fill data to update", function () {
   admin.setName(username);
   admin.setPassword("dddd");
   admin.setType(type);
-  admin.editUser(emailData, username, password, type);
+  admin.editUser(emailData, username,"dddd", type);
 });
 
 When("enter unexisteing user email to update", function () {
