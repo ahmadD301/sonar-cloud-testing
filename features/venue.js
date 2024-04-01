@@ -72,7 +72,10 @@ When("select venue does not exist to delete", function () {
   venue.deleteVenue('108');
 });
 
-Then("back the user to user home page", function () {});
+Then("back the user to user home page", function () {
+    venue.clickButton('return')
+   assert.equal(venue.nextPage,8,'return test failed')
+});
 
 When("the user enters invalid integer in venue Page {int}", function (int) {
   console.log("the option is:" + int);
