@@ -9,10 +9,13 @@ Given("the user in my account page", function () {
 });
 
 When("select {string} options", function (string) {
-  console.log("-----" + string);
+  
+  account.printMenu();
+  account.run(string);
 });
 
 When("the user enter his page name", function () {
+  
   account.loginBusinessAccount("Asem-Hesam");
 });
 

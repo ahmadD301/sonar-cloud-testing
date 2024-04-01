@@ -3,33 +3,23 @@ const DB = require("../JS-Files/ourDataBase");
 const Page = require("../JS-Files/Page.js");
 const Server = require("../main");
 const SharedMemory = require("../JS-Files/SharedData");
-class MyAccount extends Page {
-  creatAccount = false;
-  loginAccount = false;
-  returnFlage = false;
 
+class MyAccount extends Page {
   instructions = [
     "user info",
     "Create business account",
     "login business account",
     "return",
   ];
-  init() {
-    this.creatAccount = false;
-    this.loginAccount = false;
-    this.returnFlage = false;
-  }
 
   userProfileInfo() {
     console.log("display user account info");
-    console.log("|welcome "+SharedMemory.email+"|");
+    console.log("|welcome " + SharedMemory.email + "|");
     console.log(DB.userMap.get(SharedMemory.email));
-
     DB.userMap.get(Server.UserEmail);
   }
 
   creatBusinessAccount() {
-    this.creatAccount = true;
     this.nextPage = 9;
   }
   isNamePageExist(name) {
@@ -47,8 +37,6 @@ class MyAccount extends Page {
     console.log(pageName);
     console.log(this.isNamePageExist(pageName));
     if (this.isNamePageExist(pageName)) {
-      console.log("user enter: " + pageName);
-      console.log("page was found , welcome to your business");
       this.nextPage = 10;
     } else if (pageName != null && pageName != undefined && pageName != "") {
       console.log("user enter: " + pageName);
@@ -59,7 +47,6 @@ class MyAccount extends Page {
     }
   }
   returnBack() {
-    this.returnFlage = true;
     this.nextPage = 6;
   }
 
@@ -82,7 +69,13 @@ class MyAccount extends Page {
         this.creatBusinessAccount();
         break;
       case "login business account":
-        const pageName = readlineSync.question("Enter page Name ");
+        let pageName;
+        if (SharedMemory.readFromMain) {
+          pageName = readlineSync.question("Enter page Name: ");
+        } else {
+          pageName = "Asem-Hesham";
+        }
+
         this.loginBusinessAccount(pageName);
         break;
       case "return":
@@ -94,7 +87,7 @@ class MyAccount extends Page {
   }
   readOption() {
     this.nextPage = 0;
-    const option = readlineSync.question("enter option number");
+    const option = readlineSync.question("Enter option number: ");
     if (option < 4) this.run(this.instructions[option]);
     return this.nextPage;
   }

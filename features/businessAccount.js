@@ -37,8 +37,7 @@ When(
   "user select {string} options in Business Account page",
   function (string) {
     bAccount.printMenu();
-    console.log("user select option:" + string);
-
+    bAccount.run(string);
   }
 );
 Then("return him to Business Account page", function () {
@@ -48,6 +47,6 @@ Then("return him to Business Account page", function () {
 When(
   "the user enters invalid integer in Business Account Page {string}",
   function (string) {
-    console.log("user enter:" + string);
+    bAccount.run(string); 
   }
 );
