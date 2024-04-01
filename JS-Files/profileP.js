@@ -60,7 +60,7 @@ class ProfilePage extends Page {
       if (SharedData.readFromMain) {
         emailChecker = SharedData.email;
       } else {
-        emailChecker = "asemhesham@gmail.com";
+        emailChecker = "GlobalAccount";
       }
 
       if (value.email == emailChecker) {

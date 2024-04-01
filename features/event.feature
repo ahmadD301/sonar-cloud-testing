@@ -59,7 +59,11 @@ Feature: Event Creation and Management
     Scenario: return
         Given the user navicates to event page
         When user select "return" options in event management page
-        Then back to user page  
+        Then back to user page
+    Scenario: show events
+        Given the user navicates to event page
+        When user select "show event" options in event management page
+        Then back to user page
 
     Scenario Outline: Invalid input
         Given the user navicates to event page
