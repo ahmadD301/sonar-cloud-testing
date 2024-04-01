@@ -34,19 +34,19 @@ class ProfilePage extends Page {
   displayRevelation(email) {
     DB.reservationMap.forEach((value, key) => {
       if (
-        value != undefined &&
-        value.email != undefined &&
-        email != undefined &&
-        value.email == email
+          value != undefined &&
+          value.email != undefined &&
+          email != undefined &&
+          value.email == email
       ) {
         console.log(
-          `${VenuePage.makeCol(key)}  | ${VenuePage.makeCol(
-            value.email
-          )} | ${VenuePage.makeCol(value.id)} | ${VenuePage.makeCol(
-            value.startTime
-          )} | ${VenuePage.makeCol(value.endTime)} | ${VenuePage.makeCol(
-            value.startDate
-          )} |  ${VenuePage.makeCol(value.endDate)} |`
+            `${VenuePage.makeCol(key)}  | ${VenuePage.makeCol(
+                value.email
+            )} | ${VenuePage.makeCol(value.id)} | ${VenuePage.makeCol(
+                value.startTime
+            )} | ${VenuePage.makeCol(value.endTime)} | ${VenuePage.makeCol(
+                value.startDate
+            )} |  ${VenuePage.makeCol(value.endDate)} |`
         );
       }
     });
@@ -60,7 +60,7 @@ class ProfilePage extends Page {
       if (SharedData.readFromMain) {
         emailChecker = SharedData.email;
       } else {
-        emailChecker = "GlobalAccount";
+        emailChecker = "asemhesham@gmail.com";
       }
 
       if (value.email == emailChecker) {
@@ -85,27 +85,27 @@ class ProfilePage extends Page {
 
         if (this.isDateInRange(currentTime, date1Obj, oneDayLater)) {
           console.log(
-            `the reverition will start soon ${VenuePage.makeCol(
-              key
-            )}  | ${VenuePage.makeCol(value.email)} | ${VenuePage.makeCol(
-              value.id
-            )} | ${VenuePage.makeCol(value.startTime)} | ${VenuePage.makeCol(
-              value.endTime
-            )} | ${VenuePage.makeCol(value.startDate)} |  ${VenuePage.makeCol(
-              value.endDate
-            )} |\n`
+              `the reverition will start soon ${VenuePage.makeCol(
+                  key
+              )}  | ${VenuePage.makeCol(value.email)} | ${VenuePage.makeCol(
+                  value.id
+              )} | ${VenuePage.makeCol(value.startTime)} | ${VenuePage.makeCol(
+                  value.endTime
+              )} | ${VenuePage.makeCol(value.startDate)} |  ${VenuePage.makeCol(
+                  value.endDate
+              )} |\n`
           );
         } else if (this.isDateInRange(currentTime, oneDayLater, date2Obj)) {
           console.log(
-            `the reverition will finish soon ${VenuePage.makeCol(
-              key
-            )}  | ${VenuePage.makeCol(value.email)} | ${VenuePage.makeCol(
-              value.id
-            )} | ${VenuePage.makeCol(value.startTime)} | ${VenuePage.makeCol(
-              value.endTime
-            )} | ${VenuePage.makeCol(value.startDate)} |  ${VenuePage.makeCol(
-              value.endDate
-            )} |\n`
+              `the reverition will finish soon ${VenuePage.makeCol(
+                  key
+              )}  | ${VenuePage.makeCol(value.email)} | ${VenuePage.makeCol(
+                  value.id
+              )} | ${VenuePage.makeCol(value.startTime)} | ${VenuePage.makeCol(
+                  value.endTime
+              )} | ${VenuePage.makeCol(value.startDate)} |  ${VenuePage.makeCol(
+                  value.endDate
+              )} |\n`
           );
         }
       }
