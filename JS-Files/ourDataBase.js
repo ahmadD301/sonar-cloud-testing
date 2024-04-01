@@ -7,7 +7,9 @@ const userData=`{
 }`;
 const venueData=`{ 
     "101" :   { "venue_id": 101, "name": "Venue A", "location": "City X" ,"capcity":"100","price":"100$","Amenities":["chairs","bathroom"],"url":"101"},
-    "102" :   { "venue_id": 102, "name": "Venue B", "location": "City Y" ,"capcity":"100","price":"100$","Amenities":[],"url":"102"}
+    "102" :   { "venue_id": 102, "name": "Venue B", "location": "City Y" ,"capcity":"100","price":"100$","Amenities":[],"url":"102"},
+    "103" :   { "venue_id": 103, "name": "Venue C", "location": "City Z" ,"capcity":"100","price":"100$","Amenities":[],"url":"103"}
+
 }`
 const eventData=`{
     "event-001" :{ "event_id": "event-001", "name": "Event 1", "date": "2024-03-01", "venueId": "101", "time":"3:00","theme":"black","Description":"D/D/D","Count":"100","type":"party" },
