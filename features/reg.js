@@ -33,7 +33,7 @@ When(
     registerion.setEmail(string);
     registerion.setName(string2);
     registerion.setPassword(string3);
-    registerion.run('43');
+    registerion.clicks('43');
     registerion.submitMenu(5);
   }
 );

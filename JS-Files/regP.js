@@ -118,7 +118,11 @@ class RegP extends Page {
       this.setPassword(password);
       this.setEmail(email);
       this.printSubmitManu();
-      const submit = readlineSync.question("Enter submit to complete: ");
+      let submit ;
+      if(SharedData.readFromMain){
+       submit = readlineSync.question("Enter submit to complete: ");
+      }else{submit = 1}
+      
       this.submitMenu(submit);
     }
 
