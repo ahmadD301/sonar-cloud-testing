@@ -1,6 +1,7 @@
 const readlineSync = require("readline-sync");
 const Page = require("../JS-Files/Page");
 const SharedMemory = require("../JS-Files/SharedData");
+let page = new Page();
 class UserP extends Page {
   nextPage = 0;
   instructions = ["event management page", "profile page", "return"];
@@ -27,6 +28,7 @@ class UserP extends Page {
   run(theAction) {
     switch (theAction) {
       case "event management page":
+        page.printMenu();
         this.goToEventPage();
         break;
       case "profile page":
