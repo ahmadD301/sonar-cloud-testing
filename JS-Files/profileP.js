@@ -141,5 +141,6 @@ class ProfilePage extends Page {
     }
   }
 }
-
+let p = new ProfilePage();
+console.log(p.isDateInRange('2024-04-2','2024-03-31','2024-04-10'));
 module.exports = ProfilePage;

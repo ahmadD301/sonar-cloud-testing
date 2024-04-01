@@ -2,7 +2,7 @@ const fs=require('fs')
 
 
 const userData=`{
-    "a":{"username":"AsemDiab","email": "asemhesham@gmail.com","password": "1","type":"user"},
+    "asemhesham@gmail.com":{"username":"AsemDiab","email": "asemhesham@gmail.com","password": "123456","type":"user"},
     "sayed@hotmail.com":{"username":"Sayed","email": "sayed@hotmail.com","password": "123456","type":"admin"}
 }`;
 const venueData=`{ 
@@ -19,10 +19,10 @@ const eventData=`{
 const Reservation=`{
     "Rev-0":{"rev_Id":"Rev-0","email": "asemhesham@gmail.com","reservation_id": "asemhesham@gmail.com","startTime":"4:00","endTime":"5:00","startDate": "2024-04-15","endDate": "2024-04-15"},
     "Rev-1":{"rev_Id":"Rev-1","email": "asemhesham@gmail.com","reservation_id": "102","startTime":"4:00","endTime":"5:00","startDate": "2024-03-30","endDate": "2024-04-25"} ,
-    "Rev-2":{"rev_Id":"Rev-2","email": "asemhesham@gmail.com","reservation_id": "103","startTime":"4:00","endTime":"5:00","startDate": "2024-04-2","endDate": "2024-04-22"} ,
-    "Rev-3":{"rev_Id":"Rev-3","email": "asemhesham@gmail.com","reservation_id": "104","startTime":"4:00","endTime":"5:00","startDate": "2024-04-1","endDate": "2024-04-25"},
-    "Rev-4":{"rev_Id":"Rev-4","email": "AhamadDardok@gmail.com","reservation_id": "105","startTime":"4:00","endTime":"5:00","startDate": "2024-04-2","endDate": "2024-04-25"} ,
-    "Rev-5":{"rev_Id":"Rev-5","email": "AhamadDardok@gmail.com","reservation_id": "106","startTime":"4:00","endTime":"5:00","startDate": "2024-04-3","endDate": "2024-04-23"} 
+    "Rev-2":{"rev_Id":"Rev-2","email": "asemhesham@gmail.com","reservation_id": "103","startTime":"4:00","endTime":"5:00","startDate": "2024-03-31","endDate": "2024-04-22"} ,
+    "Rev-3":{"rev_Id":"Rev-3","email": "asemhesham@gmail.com","reservation_id": "104","startTime":"4:00","endTime":"5:00","startDate": "2024-03-29","endDate": "2024-04-25"},
+    "Rev-4":{"rev_Id":"Rev-4","email": "AhamadDardok@gmail.com","reservation_id": "105","startTime":"4:00","endTime":"5:00","startDate": "2024-03-25","endDate": "2024-04-25"} ,
+    "Rev-5":{"rev_Id":"Rev-5","email": "AhamadDardok@gmail.com","reservation_id": "106","startTime":"4:00","endTime":"5:00","startDate": "2024-03-3","endDate": "2024-04-23"} 
  
 }`
 
