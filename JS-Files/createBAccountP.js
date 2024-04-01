@@ -10,6 +10,8 @@ class CpaP extends Page {
   email = null;
   myAccountPage = 0;
   nextPage = 0;
+  i=1;
+
   instructions = ["create Business Account", "return"];
   pageNameValid(namePage) {
     if (namePage.trim() == "" || namePage == undefined || namePage == null)
@@ -21,7 +23,7 @@ class CpaP extends Page {
       let nameCheck = namePage;
       if (value.PageName == nameCheck) boolAnswer = false;
     });
-    
+
     return boolAnswer;
   }
 
@@ -74,8 +76,15 @@ class CpaP extends Page {
     );
   }
   readData() {
-    const namePage = readlineSync.question("Enter Your Page Name:");
-    const phoneNumber = readlineSync.question("Enter Your Phone Number:");
+    let namePage;
+    let phoneNumber;
+    if (sharedD.readFromMain) {
+      namePage = readlineSync.question("Enter Your Page Name:");
+      phoneNumber = readlineSync.question("Enter Your Phone Number:");
+    } else {
+      namePage = 'cucumber';
+      phoneNumber = '059 999 9999';
+    }
     this.selectType();
     if (
       this.allInputsValid(namePage, phoneNumber, this.businessType) &&
@@ -94,7 +103,7 @@ class CpaP extends Page {
       1: Return to MyAccount Page
       `);
   }
-
+  
   selectType() {
     console.log(`select your business type
                   1. Art Design.
@@ -102,14 +111,15 @@ class CpaP extends Page {
                   3. Market place.
                   4. Mobile Apps.
                   5. Education and Training.`);
-    
-    let option ;
-    if(sharedD.readFromMain){
-      option= readlineSync.question("Enter Your Option: ");
-    }else{
-      option = "1";
+
+    let option;
+    if (sharedD.readFromMain) {
+      option = readlineSync.question("Enter Your Option: ");
+    } else {
+      option = 0+this.i;
+      this.i++;
     }
-    switch (option) {
+    switch (String(option)) {
       case "1":
         this.setType("Art Design");
         break;
@@ -132,7 +142,7 @@ class CpaP extends Page {
 
   clicks(option) {
     switch (option) {
-      case "create Business Account" :
+      case "create Business Account":
         this.readData();
         break;
       case "return":
@@ -146,7 +156,7 @@ class CpaP extends Page {
   readOption() {
     const option = readlineSync.question("enter option number");
     if (option < 2) this.clicks(this.instructions[option]);
-    return this.nextPage
+    return this.nextPage;
   }
 }
 

@@ -5,6 +5,7 @@ let user = new UserP();
 
 Given("the User navicates into User page", function () {
   user.openPage();
+  user.printMenu();
 });
 
 When("user enters {string} option", function (string) {

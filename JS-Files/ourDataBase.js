@@ -2,7 +2,7 @@ const fs=require('fs')
 
 
 const userData=`{
-    "asemhesham@gmail.com":{"username":"AsemDiab","email": "asemhesham@gmail.com","password": "123456","type":"user"},
+    "a":{"username":"AsemDiab","email": "asemhesham@gmail.com","password": "1","type":"user"},
     "sayed@hotmail.com":{"username":"Sayed","email": "sayed@hotmail.com","password": "123456","type":"admin"}
 }`;
 const venueData=`{ 

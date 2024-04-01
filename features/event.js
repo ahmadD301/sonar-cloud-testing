@@ -104,13 +104,13 @@ When(
 When(
   "the user enters invalid integer in event management page Page {int}",
   function (int) {
-    console.log("the option is:" + int);
+    eventManagmentPage.run(String(int));
   }
 );
 
 When(
   "the user enters invalid integer in event management page Page {string}",
   function (string) {
-    console.log(string);
+    eventManagmentPage.run(string)
   }
 );
