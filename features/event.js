@@ -16,27 +16,7 @@ When("clicks on {string} option in evenet page", function (string) {
 });
 
 When("the user fill all data to add event", function () {
-  eventManagmentPage.setID("event-003");
-  eventManagmentPage.setName("event c");
-  eventManagmentPage.setDate("2024-5-6");
-  eventManagmentPage.setTheme("blue");
-  eventManagmentPage.setTime("4:00");
-  eventManagmentPage.setType("party");
-  eventManagmentPage.setVenueID("101");
-  eventManagmentPage.setCount("42");
-  eventManagmentPage.setDescription("D/D/D");
-
-  eventManagmentPage.addEvent(
-    eventManagmentPage.cache.ID,
-    eventManagmentPage.cache.name,
-    eventManagmentPage.cache.date,
-    eventManagmentPage.cache.time,
-    eventManagmentPage.cache.theme,
-    eventManagmentPage.cache.venueID,
-    eventManagmentPage.cache.description,
-    eventManagmentPage.cache.count,
-    eventManagmentPage.cache.type
-  );
+  eventManagmentPage.run('add new event');
 });
 
 Then("reture user to Event management page", function () {
@@ -73,17 +53,7 @@ When("the user fill data with invalid input", function () {
 });
 
 When("the user fill data to update", function () {
-  eventManagmentPage.editEvent(
-    "event-001",
-    "event n",
-    "2024-5-6",
-    "4:00",
-    "blue",
-    "101",
-    "D/D/D",
-    "20",
-    "party"
-  );
+  eventManagmentPage.run('update event');
 });
 
 When("the user enter ID that does not exist", function () {
@@ -115,7 +85,7 @@ When("the user fill data to update with invalid data", function () {
 });
 
 When("the user enter ID to delete", function () {
-  eventManagmentPage.selectToDelete();
+  eventManagmentPage.run('delete event')
 });
 
 When("the user enter unexisted ID to delete", function () {
@@ -128,7 +98,7 @@ Then("back to user page", function () {
 When(
   "user select {string} options in event management page",
   function (string) {
-    console.log("the option is:" + string);
+    eventManagmentPage.run('return')
   }
 );
 When(
