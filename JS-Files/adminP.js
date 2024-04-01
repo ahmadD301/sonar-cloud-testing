@@ -41,11 +41,10 @@ class AdminP extends Page {
       type = readlineSync.question("Enter user type: ");
     } else {
       username = "patata";
-      password = "dddd";
       type = "user";
     }
     this.setName(username);
-    this.setPassword(password);
+    this.setPassword("dddd");
     this.setType(type);
     this.editUser(this.email, username, password, type);
   }

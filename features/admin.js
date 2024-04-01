@@ -15,39 +15,39 @@ When("admin clicks {string} options", function (string) {
 });
 
 Then("display all user information to the admin", function () {
-    admin.showUserData();
+  admin.showUserData();
 });
 
 When("enter user email to delete", function () {
-    admin.deleteChecker('omar@hotmail.com');
+  admin.deleteChecker("omar@hotmail.com");
+  admin.deleteChecker("");
 });
 
 When("enter unexisteing user email to delete", function () {
-    admin.deleteChecker('ooo@hotmail.com');
+  admin.deleteChecker("ooo@hotmail.com");
 });
 
 When("the admin fill data to update", function () {
-    emailData = 'sayed@gmail.com';
-    username = 'Soso Qa';
-    password = "dddd";
-    type = 'user'
-    admin.setEmail(emailData);
-    admin.setName(username);
-    admin.setPassword(password);
-    admin.setType(type);
-    admin.editUser(emailData,username,password,type);
+  emailData = "sayed@gmail.com";
+  username = "Soso Qa";
+  type = "user";
+  admin.setEmail(emailData);
+  admin.setName(username);
+  admin.setPassword("dddd");
+  admin.setType(type);
+  admin.editUser(emailData, username, password, type);
 });
 
 When("enter unexisteing user email to update", function () {
-    admin.editUser('aaa@gmail.com','pee','213123','user')
+  admin.editUser("aaa@gmail.com", "pee", "213123", "user");
 });
 
 When("the user enters invalid integer in admin Page {int}", function (int) {
-    admin.clicks(String(int));
+  admin.clicks(String(int));
 });
 
 Then("return user to admin page", function () {
-    admin.openPage();
+  admin.openPage();
 });
 
 When(
