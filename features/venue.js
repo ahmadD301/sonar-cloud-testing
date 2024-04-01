@@ -148,6 +148,9 @@ When('the user search  by , {string}, , , ', function (string) {
 });
 
 
+    Then('redirect him to user page', function () {
+      assert.equal(venue.nextPage,8,'return test failed')
+    });
 
 
 

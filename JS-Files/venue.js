@@ -3,7 +3,6 @@ const readlineSync = require("readline-sync");
 const Server = require("../main");
 const Page = require("../JS-Files/Page");
 const PrintData = require("../JS-Files/printData.js");
-const {string} = require("yup");
 let printData = new PrintData();
 
 DB.init();
@@ -145,15 +144,15 @@ class VenuePage extends Page {
         DB.venueMap.get(key).Amenities
       )} |  ${VenuePage.makeCol(DB.venueMap.get(key).url)} |\n`;
     }
-    if (name != undefined&&string(name).trim()!='') tempMap = this.selectByname(name, tempMap);
+    if (name != undefined&&(name.toString()).trim()!='') tempMap = this.selectByname(name, tempMap);
 
-    if (location != undefined&&string(location).trim()!='')
+    if (location != undefined&&(location.toString()).trim()!='')
       tempMap = this.selectByLocation(location, tempMap);
 
-    if (capacity != undefined&&string(capacity).trim()!='')
+    if (capacity != undefined&&(capacity.toString()).trim()!='')
       tempMap = this.selectByCapacity(capacity, tempMap);
 
-    if (price != undefined&&string(price).trim()!='') tempMap = this.selectByPrice(price, tempMap);
+    if (price != undefined&&(price.toString()).trim()!='') tempMap = this.selectByPrice(price, tempMap);
 
     tempMap.forEach((value, key) => {
       result += `${VenuePage.makeCol(key)} | ${VenuePage.makeCol(

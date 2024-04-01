@@ -127,6 +127,7 @@ class EventManagementPage extends Page {
       DB.insertEvent(
         id,
         name,
+          SharedData.email,
         date,
         time,
         theme,
@@ -322,11 +323,18 @@ class EventManagementPage extends Page {
     if (option < 5) this.run(this.instructions[option]);
     return this.nextPage;
   }
-
+  getRows(){
+    let temp=new Map();
+    DB.eventMap.forEach((value,key)=>{
+      if(value.owner.trim()===SharedData.email.trim())
+        temp.set(key,value)
+    })
+   return temp
+  }
   run(theAction) {
     switch (theAction.trim()) {
       case "show event":
-        printData.printEventData(DB.eventMap);
+        printData.printEventData(this.getRows());
         break;
       case "add new event":
         this.fillDataToAdd();
@@ -346,5 +354,6 @@ class EventManagementPage extends Page {
     }
   }
 }
+
 
 module.exports = EventManagementPage;

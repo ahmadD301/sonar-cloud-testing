@@ -12,8 +12,8 @@ const venueData=`{
 
 }`
 const eventData=`{
-    "event-001" :{ "event_id": "event-001", "name": "Event 1", "date": "2024-03-01", "venueId": "101", "time":"3:00","theme":"black","Description":"D/D/D","Count":"100","type":"party" },
-    "event-002" :{ "event_id": "event-002", "name": "Event 2", "date": "2024-03-15", "venueId": "102", "time":"4:00","theme":"gray", "Description":"D/D/D","Count":"100","type":"party" }
+    "event-001" :{ "event_id": "event-001","owner":"asemhesham@gmail.com" ,"name": "Event 1", "date": "2024-03-01", "venueId": "101", "time":"3:00","theme":"black","Description":"D/D/D","Count":"100","type":"party" },
+    "event-002" :{ "event_id": "event-002", "owner":"asemhesham@gmail.com" ,"name": "Event 2", "date": "2024-03-15", "venueId": "102", "time":"4:00","theme":"gray", "Description":"D/D/D","Count":"100","type":"party" }
 }`
 
 const Reservation=`{
@@ -65,7 +65,7 @@ class DataHandler{
             let event=JSON.parse(eventData);
             this.isreadevent=true;
             for ( let key  in event){
-                DataHandler.insertEvent(key,event[key].name,event[key].date,event[key].venueId,event[key].time,event[key].theme,event[key].Description,event[key].Count,event[key].type)
+                DataHandler.insertEvent(key,event[key].name,event[key].owner,event[key].date,event[key].venueId,event[key].time,event[key].theme,event[key].Description,event[key].Count,event[key].type)
             }
             let  reservation=JSON.parse(Reservation);
             for ( let key  in reservation){
@@ -98,7 +98,6 @@ class DataHandler{
 
 
     static insertVenue(id,name,location,capcity,price,Amenities,url){
-        
         let x= {
             venue_id: id,
              name: name,
@@ -130,7 +129,7 @@ class DataHandler{
 
 
     }
-    static insertEvent(id,name,date,venue,time, theme,Description,Count,type ){
+    static insertEvent(id,name,owner,date,venue,time, theme,Description,Count,type ){
 
         if(id==undefined)
             id=DataHandler.eventMap.size;
@@ -138,6 +137,7 @@ class DataHandler{
         let x= {
             event_id: id,
              name: name,
+            owner:owner,
              date: date,
              venueId: venue
             ,time:time,
@@ -196,7 +196,7 @@ class DataHandler{
             let newDescription= ((Description != undefined && Description != '') ? Description.trim() :row.Description);
             let newCount= ((Count != undefined && Count != '')? Count.trim() :row.Count);
             let newtype= ((type != undefined &&type != '') ? type.trim() :row.type);
-            DataHandler.insertEvent(id,newName,newDate,newVenue,newtime, newtheme ,newDescription, newCount, newtype);
+            DataHandler.insertEvent(id,newName,row.owner,newDate,newVenue,newtime, newtheme ,newDescription, newCount, newtype);
         }
     }
 }
