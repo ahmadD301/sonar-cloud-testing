@@ -1,5 +1,6 @@
 const readlineSync = require("readline-sync");
 const Page = require("../JS-Files/Page");
+const SharedMemory = require("../JS-Files/SharedData");
 class UserP extends Page {
   nextPage = 0;
   instructions = ["event management page", "profile page", "return"];
@@ -41,7 +42,12 @@ class UserP extends Page {
   }
 
   readOption() {
-    const option = readlineSync.question("Enter option number: ");
+    let option;
+    if(SharedMemory.readFromMain){
+      option = readlineSync.question("Enter option number: ");
+    }else{
+      option = 4;
+    }
     if (option < 3) this.run(this.instructions[option]);
     return this.nextPage;
   }

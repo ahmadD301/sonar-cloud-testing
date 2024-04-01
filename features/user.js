@@ -25,7 +25,7 @@ Then("redirect him from user page to Start Page", function () {
 });
 
 When("user enters invalid integer {int}", function (int) {
-  user.run(String(int));
+  user.readOption();
 });
 
 When("user enters invalid integer {string}", function (string) {
