@@ -1,13 +1,14 @@
 const { Given, When, Then } = require("@cucumber/cucumber");
 const assert = require("assert");
 const StartP = require("../JS-Files/startP");
+const { start } = require("repl");
 let Start = new StartP();
 
 Given("the user is in the startng page", function () {
   Start.openPage();
+  Start.printMenu();
 });
 When("the user enters {string} option", function (string) {
-
   Start.run(string);
 });
 
