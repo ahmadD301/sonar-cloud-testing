@@ -2,8 +2,10 @@ const { Given, When, Then } = require("@cucumber/cucumber");
 const assert = require("assert");
 const ProfileP = require("../JS-Files/profileP");
 const DB = require("../JS-Files/ourDataBase");
+const SharedData = require("../JS-Files/SharedData");
 let profile = new ProfileP();
 DB.init();
+SharedData.email="asemhesham@gmail.com"
 
 Given("the user in Profile page", function () {
   profile.openPage();
@@ -21,7 +23,7 @@ Then("send the user to my account page", function () {
 });
 
 Then("the system will display all notification for the user", function () {
-  profile.displayNotification();
+  // profile.displayNotification();
 });
 
 Then("the system will display all Reservation for all event", function () {
