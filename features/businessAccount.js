@@ -50,3 +50,11 @@ When(
     bAccount.run(string); 
   }
 );
+
+When('the user fills all attribute \( name , email ,password,..ect) with valid inputs', () => {
+  // Write code here that turns the phrase above into concrete actions
+})
+
+When('the user fills all attribute \( name , email ,password,..ect) with valid inputs', () => {
+  // Write code here that turns the phrase above into concrete actions
+})

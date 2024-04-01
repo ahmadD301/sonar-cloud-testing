@@ -6,23 +6,24 @@ let registerion = new RegP();
 
 Given("the user is in the registerion page", function () {
   registerion.openPage();
+  registerion.printMenu();
 });
 
 When(
   "the user fills all attribute \\( name , email ,password,..ect) with valid inputs",
   function () {
-    registerion.setName("asem");
-    registerion.setEmail("semhesham@gmail.com");
-    registerion.setPassword("Asem@2003");
+    registerion.clicks('start reg');
   }
 );
 
 When("clicks on submit option", function () {
+  registerion.printSubmitManu();
   registerion.fillData();
 });
 
 Then("redirect him to login page", function () {
   registerion.goToLoginPage();
+  registerion.submitMenu(1);
   assert.equal(registerion.nextPage, 3);
 });
 
@@ -32,6 +33,8 @@ When(
     registerion.setEmail(string);
     registerion.setName(string2);
     registerion.setPassword(string3);
+    registerion.run('43');
+    registerion.submitMenu(5);
   }
 );
 
@@ -62,7 +65,7 @@ When("user enters a weak password", function () {
 
 
 When("clicks on login page button", function () {
-  registerion.goToLoginPage();
+  registerion.clicks('go to login page')
 });
 
 Then("send the user to login page", function () {

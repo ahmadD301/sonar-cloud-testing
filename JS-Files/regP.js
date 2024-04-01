@@ -2,7 +2,8 @@ const readlineSync = require("readline-sync");
 const DB = require("../JS-Files/ourDataBase");
 const SharedData = require("../JS-Files/SharedData.js");
 const Page = require("./Page.js");
-DB.init();
+
+
 class RegP extends Page {
   username = null;
   email = null;
@@ -61,7 +62,7 @@ class RegP extends Page {
       hasSpecialChar
     ) {
       return true;
-    } else if(SharedData.readFromMain){
+    } else{
       console.log(`"Warning: Your password is weak!
                    For a stronger password:
                    - Use a combination of uppercase and lowercase letters.
@@ -96,10 +97,18 @@ class RegP extends Page {
 
   readTheData() {
 
-    let email = readlineSync.question("Enter Your Email: ");
-    let username = readlineSync.question("Enter Your Name: ");
-    let password = readlineSync.question("Enter Your Password: ");
-
+    let email ;
+    let username;
+    let password;
+    if(SharedData.readFromMain){
+      email = readlineSync.question("Enter Your Email: ");
+      username = readlineSync.question("Enter Your Name: ");
+      password = readlineSync.question("Enter Your Password: ");
+    }else{
+      email = "ahmad301@gmail.com";
+      username = "ahamdD";
+      password = "123Ss@@123";
+    }
     if (
       this.emailValidity(email) &&
       this.usernameValidity(username) &&
@@ -118,7 +127,6 @@ class RegP extends Page {
   submitMenu(option) {
     switch (String(option)) {
       case "0":
-        // this.readTheData();
         this.fillData();
         break;
       case "1":
