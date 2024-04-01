@@ -13,13 +13,13 @@ class AdminP extends Page {
   password = null;
   userType = null;
   nextPage = 0;
-  instructions = ["delete user", "update user", "show user data", "logout"];
+  instructions = ["show all user", "update user", "delete user", "logout"];
   printMenu() {
     console.log(`options:
                             0. Show User Data 
                             1. Update User
                             2. Delete User
-                            3. Return`);
+                            3. Logout`);
   }
   isValidInput(value) {
     return value != null && value != undefined && value.toString().trim() != "";
@@ -131,7 +131,7 @@ class AdminP extends Page {
         this.updateUser();
         break;
       case "show all user":
-        this.showUserData(); 
+        this.showUserData();
         break;
       case "logout":
         this.logout();
@@ -143,7 +143,7 @@ class AdminP extends Page {
   
   readOption() {
     const option = readlineSync.question("Enter option number: ");
-    if (option < 4) this.run(this.instructions[option]);
+    if (option < 4) this.clicks(this.instructions[option]);
     return this.nextPage;
   }
 }
