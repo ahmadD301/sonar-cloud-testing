@@ -84,8 +84,9 @@ class DataHandler{
 
      static insertUser(_email,username,password,type){
 
-        if(DataHandler.userMap.get((_email.trim()).toLowerCase())!=undefined&& !DataHandler.isUpadte)
+        if(DataHandler.userMap.get((_email.trim()).toLowerCase())!=undefined&& !DataHandler.isUpdate)
             return;
+        
         let x={
             username:username.trim(),
             email:_email.trim(),
@@ -168,7 +169,7 @@ class DataHandler{
 
     if(_email==undefined)
         return;
-            let row = DataHandler.userMap.get(string(_email));
+            let row = DataHandler.userMap.get(String(_email).toLowerCase().trim());
             if(row==undefined)
                 return;
                 let newUsername= (username != undefined ? username :row.username);
