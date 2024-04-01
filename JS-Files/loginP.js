@@ -69,7 +69,9 @@ class LoginP extends Page {
         console.log("Invalid option. Please choose an existed option");
     }
   }
-
+  goToAdmin(){
+    this.nextPage = 7;
+  }
   checkEmailAndPassword(email, password) {
     this.cache.email = email;
     this.cache.password = password;
@@ -83,6 +85,7 @@ class LoginP extends Page {
         switch (tempState) {
           case "admin":
             console.log('welcom admin');
+            this.goToAdmin();
             break;
           case "user":
             this.goToUserPage();
