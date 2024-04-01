@@ -208,9 +208,6 @@ class EventManagementPage extends Page {
     }
   }
 
-  setOption(option) {
-    this.option = option;
-  }
 
   cacheSubmit() {
     this.eventID = this.cache.ID;

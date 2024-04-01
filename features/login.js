@@ -5,6 +5,7 @@ let login = new LoginP();
 Given("the user is on the login page", function () {
   login.openPage();
   login.printMenu();
+  login.clicks("return")
 });
 
 When(
@@ -14,6 +15,7 @@ When(
     login.setEmail(string);
     login.setPassword(string2);
     login.submitManu('0');
+
   }
 );
 
