@@ -107,7 +107,7 @@ class RegP extends Page {
     }else{
       email = "ahmad301@gmail.com";
       username = "ahamdD";
-      password = "123Ss@@123";
+      password = "123Ss#1123";
     }
     if (
       this.emailValidity(email) &&
