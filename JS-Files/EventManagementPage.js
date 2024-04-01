@@ -3,6 +3,8 @@ const DB = require("../JS-Files/ourDataBase.js");
 const readlineSync = require("readline-sync");
 const Server = require("../main");
 const PrintData = require("../JS-Files/printData.js");
+const SharedMemory = require("../JS-Files/SharedData");
+const SharedData = require("../JS-Files/SharedData");
 let printData = new PrintData();
 DB.init();
 
@@ -78,7 +80,8 @@ class EventManagementPage extends Page {
     if (eventID != "" && eventID != undefined && eventID != null) {
       this.cacheSubmit();
       return DB.eventMap.get(eventID) == undefined;
-    } else return false;
+    }
+    return false;
   }
 
   isValidInput(value) {
@@ -156,10 +159,7 @@ class EventManagementPage extends Page {
     attendeeCount,
     eventType
   ) {
-    if (
-
-      this.checkEventID(id) == false
-    ) {
+    if (this.checkEventID(id) == false) {
       DB.updateEvent(
         id,
         name,
@@ -184,7 +184,12 @@ class EventManagementPage extends Page {
   }
 
   selectToDelete() {
-    const ID = readlineSync.question("Enter ID To Delete:");
+    let ID;
+    if(SharedData.readFromMain){
+    ID = readlineSync.question("Enter ID To Delete:");
+    }else{
+    ID = "event-001"
+    }
     if (!this.checkEventID(ID)) {
       this.deleteEvent(ID);
     } else {
@@ -268,7 +273,10 @@ class EventManagementPage extends Page {
   }
 
   selectToUpdate() {
-    const ID = readlineSync.question("Enter ID To Update:");
+    let ID;
+    if(SharedData.readFromMain){
+     ID = readlineSync.question("Enter ID To Update:");
+    }else{ID = 'event-004'}
     if (this.isValidInput(ID)) {
       this.readData();
       this.editEvent(
