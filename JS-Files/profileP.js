@@ -56,7 +56,14 @@ class ProfilePage extends Page {
   }
   displayNotification() {
     DB.reservationMap.forEach((value, key) => {
-      if (value.email == SharedData.email) {
+      let emailChecker;
+      if (SharedData.readFromMain) {
+        emailChecker = SharedData.email;
+      } else {
+        emailChecker = "asemhesham@gmail.com";
+      }
+
+      if (value.email == emailChecker) {
         let date1 = value.startDate;
         let date2 = value.endDate;
         let time1 = value.startTime;
@@ -76,7 +83,7 @@ class ProfilePage extends Page {
 
         oneDayLater.setDate(currentTime.getDate() + 1);
 
-        if (this.isDateInRange(date1Obj, currentTime, oneDayLater)) {
+        if (this.isDateInRange(currentTime, date1Obj, oneDayLater)) {
           console.log(
             `the reverition will start soon ${VenuePage.makeCol(
               key
@@ -88,7 +95,7 @@ class ProfilePage extends Page {
               value.endDate
             )} |\n`
           );
-        } else if (this.isDateInRange(date2Obj, currentTime, oneDayLater)) {
+        } else if (this.isDateInRange(currentTime, oneDayLater, date2Obj)) {
           console.log(
             `the reverition will finish soon ${VenuePage.makeCol(
               key
@@ -141,6 +148,5 @@ class ProfilePage extends Page {
     }
   }
 }
-let p = new ProfilePage();
-console.log(p.isDateInRange('2024-04-2','2024-03-31','2024-04-10'));
+
 module.exports = ProfilePage;
