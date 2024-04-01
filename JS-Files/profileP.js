@@ -4,7 +4,6 @@ const Page = require("../JS-Files/Page.js");
 const VenuePage = require("../JS-Files/venue.js");
 const SharedData = require("../JS-Files/SharedData");
 
-
 class ProfilePage extends Page {
   nextPage = 0;
 
@@ -20,7 +19,7 @@ class ProfilePage extends Page {
     const dateToCheckMs = new Date(dateToCheck).getTime();
     const startDateMs = new Date(startDate).getTime();
     const endDateMs = new Date(endDate).getTime();
-  
+
     return dateToCheckMs >= startDateMs && dateToCheckMs <= endDateMs;
   }
 
@@ -33,7 +32,6 @@ class ProfilePage extends Page {
     this.nextPage = 1;
   }
   displayRevelation(email) {
-    this.isRevelitionDisplaied = true;
     DB.reservationMap.forEach((value, key) => {
       if (
         value != undefined &&
@@ -78,7 +76,7 @@ class ProfilePage extends Page {
 
         oneDayLater.setDate(currentTime.getDate() + 1);
 
-        if (this.isDateInRange(date1Obj, currentTime, oneDayLater))
+        if (this.isDateInRange(date1Obj, currentTime, oneDayLater)) {
           console.log(
             `the reverition will start soon ${VenuePage.makeCol(
               key
@@ -90,7 +88,7 @@ class ProfilePage extends Page {
               value.endDate
             )} |\n`
           );
-        else if (this.isDateInRange(date2Obj, currentTime, oneDayLater))
+        } else if (this.isDateInRange(date2Obj, currentTime, oneDayLater)) {
           console.log(
             `the reverition will finish soon ${VenuePage.makeCol(
               key
@@ -102,6 +100,7 @@ class ProfilePage extends Page {
               value.endDate
             )} |\n`
           );
+        }
       }
     });
   }
