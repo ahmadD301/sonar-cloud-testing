@@ -70,4 +70,30 @@ Feature: place manegment
             | 15    |
             | 's'   |
             | -15   |
+    Scenario Outline: Serarch By Attr
+        Given the user logged into venue page
+        When the user search  by <id>, <name>, <location>, <capacity>, <price>
+        Then display
+        Examples:
+
+            | id    | name      | location | capacity | price  |
+            | '102' | "Venue B" | "City Y" | "100"    | "100$" |
+            | '102'   |           |          |          |        |
+            |       | "Venue B" |          |          |        |
+            |       |           | "City Y" |          |        |
+            |       |           |          | "100"    |        |
+            |       |           |          |          | "100$" |
+            |       | "Venue B" | "City Y" |          |        |
+            |       | "Venue B" |          | "100"    |        |
+            |       | "Venue B" |          |          | "100$" |
+            |       | "Venue B" | "City Y" | "100"    |        |
+            |       | "Venue B" | "City Y" |          | "100$" |
+            |       | "Venue B" |          | "100"    | "100$" |
+            |       | "Venue B" | "City Y" | "100"    | "100$" |
+
+
+
+
+
+
 

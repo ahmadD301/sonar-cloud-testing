@@ -86,3 +86,74 @@ When(
     venue.clickButton();
   }
 );
+
+When('the user search  by , {string}, {string}, {string}, {string}', function (string, string2, string3, string4) {
+ venue.searchByAtteibute('',string, string2, string3, string4)
+});
+
+
+
+When('the user search  by , {string}, , {string}, {string}', function (string, string2, string3) {
+      venue.searchByAtteibute('',string,'', string2, string3)
+
+    });
+When('the user search  by {string}, {string}, {string}, {string}, {string}', function (string, string2, string3, string4, string5) {
+  venue.searchByAtteibute(string, string2, string3, string4,string5)
+
+});
+When('the user search  by {string}, , , , ', function (string) {
+  venue.searchByAtteibute(string,'','','','')
+});
+When('the user search  by , {string}, {string}, , {string}', function (string, string2, string3) {
+  venue.searchByAtteibute(undefined,string,string2,'','','',string3)
+
+});
+When('the user search  by , {string}, {string}, {string}, ', function (string, string2, string3) {
+  venue.searchByAtteibute('',string,string2,'','',string3)
+
+});
+
+
+When('the user search  by , {string}, , , {string}', function (string, string2) {
+  venue.searchByAtteibute('',string,'','','',string2)
+
+});
+
+When('the user search  by , {string}, , {string}, ', function (string, string2) {
+  venue.searchByAtteibute('',string,'',string2,'')
+
+});
+
+When('the user search  by , {string}, {string}, , ', function (string, string2) {
+  venue.searchByAtteibute('',string,string2,'','')
+
+});
+
+When('the user search  by , , , , {string}', function (string) {
+  venue.searchByAtteibute('','','','',string)
+
+});
+
+When('the user search  by , , , {string}, ', function (string) {
+  venue.searchByAtteibute('','','',string,'')
+
+});
+
+When('the user search  by , , {string}, , ', function (string) {
+  venue.searchByAtteibute('','',string,'','')
+});
+When('the user search  by , {string}, , , ', function (string) {
+  venue.searchByAtteibute('',string,'','','')
+
+});
+
+
+
+
+
+
+
+Then('display', function () {
+});
+
+

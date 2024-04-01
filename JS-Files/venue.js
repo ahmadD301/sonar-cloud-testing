@@ -3,6 +3,7 @@ const readlineSync = require("readline-sync");
 const Server = require("../main");
 const Page = require("../JS-Files/Page");
 const PrintData = require("../JS-Files/printData.js");
+const {string} = require("yup");
 let printData = new PrintData();
 
 DB.init();
@@ -26,7 +27,6 @@ class VenuePage extends Page {
                         4. return`);
   }
   openUserPage() {
-    this.userPage = 1;
     this.nextPage = 8;
   }
   deleteChecker(idValue) {
@@ -37,12 +37,12 @@ class VenuePage extends Page {
   }
   allInputsValid(idValue, name, location, capacity, price, Amenities) {
     return (
-      isValidInput(idValue) &&
-      isValidInput(name) &&
-      isValidInput(location) &&
-      isValidInput(capacity) &&
-      isValidInput(price) &&
-      isValidInput(Amenities)
+        isValidInput(idValue) &&
+        isValidInput(name) &&
+        isValidInput(location) &&
+        isValidInput(capacity) &&
+        isValidInput(price) &&
+        isValidInput(Amenities)
     );
   }
 
@@ -126,10 +126,11 @@ class VenuePage extends Page {
     let result = "";
     let tempMap = DB.venueMap;
 
-    if (id != undefined) {
-      let key = id.toString();
+    if (id != undefined&& (id.toString()).trim()!=='') {
+      let key = id.toString()
       let row = new Map();
       row.set(key, tempMap.get(key));
+
       printData.printVenueData(row);
 
       return `${VenuePage.makeCol(key)} | ${VenuePage.makeCol(
@@ -144,15 +145,15 @@ class VenuePage extends Page {
         DB.venueMap.get(key).Amenities
       )} |  ${VenuePage.makeCol(DB.venueMap.get(key).url)} |\n`;
     }
-    if (name != undefined) tempMap = this.selectByname(name, tempMap);
+    if (name != undefined&&string(name).trim()!='') tempMap = this.selectByname(name, tempMap);
 
-    if (location != undefined)
+    if (location != undefined&&string(location).trim()!='')
       tempMap = this.selectByLocation(location, tempMap);
 
-    if (capacity != undefined)
+    if (capacity != undefined&&string(capacity).trim()!='')
       tempMap = this.selectByCapacity(capacity, tempMap);
 
-    if (price != undefined) tempMap = this.selectByPrice(price, tempMap);
+    if (price != undefined&&string(price).trim()!='') tempMap = this.selectByPrice(price, tempMap);
 
     tempMap.forEach((value, key) => {
       result += `${VenuePage.makeCol(key)} | ${VenuePage.makeCol(
