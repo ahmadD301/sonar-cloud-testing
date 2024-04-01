@@ -32,7 +32,6 @@ class AdminP extends Page {
     return false;
   }
   readData() {
-    let email;
     let username;
     let password;
     let type;
@@ -78,7 +77,7 @@ class AdminP extends Page {
     if (sharedD.readFromMain) {
       enterID = readlineSync.question("Enter user email to delete: ");
     } else {
-      enterID = "asemhesham@gmail.com";
+      enterID = "ana@gmail.com";
     }
     this.deleteChecker(enterID);
   }
@@ -88,7 +87,7 @@ class AdminP extends Page {
     if (sharedD.readFromMain) {
       ID = readlineSync.question("Enter user email to update: ");
     } else {
-      ID = "ssm@gmail.com";
+      ID = "omar@gmail.com";
     }
     this.setEmail(ID);
     if (this.isValidInput(ID)) {
@@ -132,7 +131,7 @@ class AdminP extends Page {
       case "update user":
         this.updateUser();
         break;
-      case "show user data":
+      case "show all user":
         this.showUserData(); 
         break;
       case "logout":

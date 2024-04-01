@@ -19,13 +19,11 @@ Then("display all user information to the admin", function () {
 });
 
 When("enter user email to delete", function () {
-    admin.deleteUser();
+    admin.deleteChecker('omar@hotmail.com');
 });
 
 When("enter unexisteing user email to delete", function () {
-    emailData = 'ase@gmail.com';
-    admin.setEmail(emailData);
-    admin.deleteUser()
+    admin.deleteChecker('ooo@hotmail.com');
 });
 
 When("the admin fill data to update", function () {
@@ -37,10 +35,11 @@ When("the admin fill data to update", function () {
     admin.setName(username);
     admin.setPassword(password);
     admin.setType(type);
+    admin.editUser(emailData,username,password,type);
 });
 
 When("enter unexisteing user email to update", function () {
-    admin.updateUser();
+    admin.editUser('aaa@gmail.com','pee','213123','user')
 });
 
 When("the user enters invalid integer in admin Page {int}", function (int) {

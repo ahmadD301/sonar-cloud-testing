@@ -3,8 +3,11 @@ const fs=require('fs')
 
 const userData=`{
     "asemhesham@gmail.com":{"username":"AsemDiab","email": "asemhesham@gmail.com","password": "123456","type":"user"},
+    "ahmad@gmail.com":{"username":"ahmad","email": "ahmad@gmail.com","password": "123456","type":"user"},
+    "omar@gmail.com":{"username":"omar","email": "omar@gmail.com","password": "123456","type":"user"},
+    "ana@gmail.com":{"username":"ana","email": "ana@gmail.com","password": "123456","type":"user"},
     "sayed@hotmail.com":{"username":"Sayed","email": "sayed@hotmail.com","password": "123456","type":"admin"}
-}`;
+}`
 const venueData=`{ 
     "101" :   { "venue_id": 101, "name": "Venue A", "location": "City X" ,"capcity":"100","price":"100$","Amenities":["chairs","bathroom"],"url":"101"},
     "102" :   { "venue_id": 102, "name": "Venue B", "location": "City Y" ,"capcity":"100","price":"100$","Amenities":[],"url":"102"},
