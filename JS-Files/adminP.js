@@ -70,7 +70,6 @@ class AdminP extends Page {
     }
   }
   deleteUser() {
-    printData.printUserData(DB.userMap);
     let enterID;
     if (sharedD.readFromMain) {
       enterID = readlineSync.question("Enter user email to delete: ");
@@ -80,7 +79,6 @@ class AdminP extends Page {
     this.deleteChecker(enterID);
   }
   updateUser() {
-    printData.printUserData(DB.userMap);
     let ID;
     if (sharedD.readFromMain) {
       ID = readlineSync.question("Enter user email to update: ");
@@ -139,7 +137,7 @@ class AdminP extends Page {
         console.log("Invalid option. Please choose an existed option");
     }
   }
-  
+
   readOption() {
     const option = readlineSync.question("Enter option number: ");
     if (option < 4) this.clicks(this.instructions[option]);

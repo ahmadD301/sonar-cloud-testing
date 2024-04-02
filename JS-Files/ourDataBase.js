@@ -72,7 +72,7 @@ class DataHandler{
             }
             let  reservation=JSON.parse(Reservation);
             for ( let key  in reservation){
-                DataHandler.insertReservation(key,reservation[key].email,reservation[key].id
+                DataHandler.insertReservation(key,reservation[key].email,reservation[key].rev_Id
                                                 ,reservation[key].startDate,reservation[key].endDate,
                                                  reservation[key].startTime,reservation[key].endTime)
             }

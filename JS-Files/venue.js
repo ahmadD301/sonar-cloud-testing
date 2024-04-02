@@ -234,7 +234,6 @@ class VenuePage extends Page {
       let newDate2 = value.endDate;
       let newTime1 = value.startTime;
       let newTime2 = value.endTime;
-      console.log(newDate1, newDate2, newTime1, newTime2);
       const [newyear1, newmonth1, newday1] = newDate1.split("-").map(Number);
       const [newyear2, newmonth2, newday2] = newDate2.split("-").map(Number);
 
@@ -264,7 +263,6 @@ class VenuePage extends Page {
   }
 
   bookVenue(email, id, startTime, endTime, startDate, endDate) {
-    console.log(id, startTime, endTime, startDate, endDate);
     if (!this.isBooked(id, startTime, endTime, startDate, endDate)) {
       let rid = "rev-" + DB.reservationMap.size;
       DB.insertReservation(
@@ -276,7 +274,6 @@ class VenuePage extends Page {
         startTime,
         endTime
       );
-      console.log(DB.reservationMap);
     }
   }
 
