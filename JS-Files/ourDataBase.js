@@ -1,5 +1,5 @@
 const fs=require('fs')
-
+const path=require('path')
 
 const userData=`{
     "asemhesham@gmail.com":{"username":"AsemDiab","email": "asemhesham@gmail.com","password": "123456","type":"user"},
@@ -15,8 +15,8 @@ const venueData=`{
 
 }`
 const eventData=`{
-    "event-001" :{ "event_id": "event-001","owner":"asemhesham@gmail.com" ,"name": "Event 1", "date": "2024-03-01", "venueId": "101", "time":"3:00","theme":"black","Description":"D/D/D","Count":"100","type":"party" },
-    "event-002" :{ "event_id": "event-002", "owner":"asemhesham@gmail.com" ,"name": "Event 2", "date": "2024-03-15", "venueId": "102", "time":"4:00","theme":"gray", "Description":"D/D/D","Count":"100","type":"party" }
+    "event-001" :{ "event_id": "event-001","owner":"asemhesham@gmail.com" ,"name": "Event 1", "date": "2024-03-01", "venueId": "101", "time":"3:00","theme":"black","Description":"D/D/D","Count":"100","type":"party" ,"url":"event-001"},
+    "event-002" :{ "event_id": "event-002", "owner":"asemhesham@gmail.com" ,"name": "Event 2", "date": "2024-03-15", "venueId": "102", "time":"4:00","theme":"gray", "Description":"D/D/D","Count":"100","type":"party" ,"url":"event-002"}
 }`
 
 const Reservation=`{
@@ -24,8 +24,8 @@ const Reservation=`{
     "Rev-1":{"rev_Id":"Rev-1","email": "asemhesham@gmail.com","reservation_id": "102","startTime":"4:00","endTime":"5:00","startDate": "2024-03-30","endDate": "2024-04-25"} ,
     "Rev-2":{"rev_Id":"Rev-2","email": "asemhesham@gmail.com","reservation_id": "103","startTime":"4:00","endTime":"5:00","startDate": "2024-04-2","endDate": "2024-04-22"} ,
     "Rev-3":{"rev_Id":"Rev-3","email": "asemhesham@gmail.com","reservation_id": "104","startTime":"4:00","endTime":"5:00","startDate": "2024-04-1","endDate": "2024-04-2"},
-    "Rev-4":{"rev_Id":"Rev-4","email": "AhamadDardok@gmail.com","reservation_id": "105","startTime":"4:00","endTime":"5:00","startDate": "2024-04-2","endDate": "2024-04-25"} ,
-    "Rev-5":{"rev_Id":"Rev-5","email": "AhamadDardok@gmail.com","reservation_id": "106","startTime":"4:00","endTime":"1:00","startDate": "2024-04-1","endDate": "2024-04-2"} 
+    "Rev-4":{"rev_Id":"Rev-4","email": "ahmad@gmail.com","reservation_id": "105","startTime":"4:00","endTime":"5:00","startDate": "2024-04-2","endDate": "2024-04-25"} ,
+    "Rev-5":{"rev_Id":"Rev-5","email": "ahmad@gmail.com","reservation_id": "106","startTime":"4:00","endTime":"1:00","startDate": "2024-04-1","endDate": "2024-04-2"} 
  
 }`
 
@@ -113,8 +113,24 @@ class DataHandler{
                 }
 
              DataHandler.venueMap.set(id,x)
-       
+        this.addVenue(id.toString());
+
+
     }
+    static addVenue(venueName) {
+        const venueDir = path.join( venueName);
+
+        // Check if the directory already exists
+        if (fs.existsSync(venueDir)) {
+            return;
+        }
+
+        // Create the directory
+        fs.mkdirSync(venueDir);
+
+    }
+
+// Example usage
     static insertReservation(rid,email,id,startDate,endDate,startTime,endTime ){
 
         if(rid==undefined)
@@ -151,6 +167,7 @@ class DataHandler{
             ,type:type                }
 
              DataHandler.eventMap.set(id,x)
+            DataHandler.addVenue(id)
 
 
     }

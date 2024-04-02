@@ -5,7 +5,7 @@ const Page = require("../JS-Files/Page");
 const PrintData = require("../JS-Files/printData.js");
 let printData = new PrintData();
 
-DB.init();
+
 class VenuePage extends Page {
   userPage = 0;
   nextPage = 0;

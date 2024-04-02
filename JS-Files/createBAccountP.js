@@ -2,7 +2,6 @@ const readlineSync = require("readline-sync");
 const DB = require("./ourDataBase.js");
 const Page = require("./Page.js");
 const sharedD = require("./SharedData.js");
-DB.init();
 class CpaP extends Page {
   pageName = null;
   phoneNumber = null;

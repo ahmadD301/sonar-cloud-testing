@@ -4,7 +4,6 @@ const readlineSync = require("readline-sync");
 const Server = require("../main");
 const PrintData = require("../JS-Files/printData.js");
 const sharedD = require("../JS-Files/SharedData.js");
-DB.init();
 let printData = new PrintData();
 
 class AdminP extends Page {

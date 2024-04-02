@@ -5,7 +5,6 @@ const Server = require("../main");
 const PrintData = require("../JS-Files/printData.js");
 const SharedData = require("../JS-Files/SharedData");
 let printData = new PrintData();
-DB.init();
 
 class EventManagementPage extends Page {
   eventID = null;

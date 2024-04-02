@@ -13,7 +13,7 @@
 // const BussinessAccount = require("./JS-Files/businessAccountP");
 // const VenuePage = require("./JS-Files/venue");
 // const SharedData = require("./JS-Files/SharedData.js");
-
+//
 // class Server {
 //   static currentPage = new Page();
 //   static PageName;
@@ -76,7 +76,7 @@
 //       switch (String(status)) {
 //         case "-1":
 //           process.exit(0);
-
+//
 //         case "0":
 //           break;
 //         case "1":
@@ -116,6 +116,6 @@
 //     }
 //   }
 // }
-
+//
 // Server.buildServer();
 // module.exports = Server;
